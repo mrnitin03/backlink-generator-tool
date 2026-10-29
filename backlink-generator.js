@@ -1034,7 +1034,7 @@ downloadBtn.addEventListener('click', () => {
         return;
     }
     const vid = new URL(norm).searchParams.get('v');
-    let templates = vid ? [...youtubeBacklinkTemplates, 'https://web.archive.org/save/[URL]'] : backlinkTemplates.slice();
+    let templates = vid ? youtubeBacklinkTemplates.slice() : backlinkTemplates.slice();
     if (shuffleCheckbox.checked) templates.sort(() => Math.random() - 0.5);
     const urls = templates.map(tpl => {
         try {
