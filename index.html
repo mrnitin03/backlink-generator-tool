@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Backlink & Share Link Helper</title>
+    <meta name="description" content="Create and manage social sharing links for your website. Sharing links are not guaranteed SEO backlinks.">
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./stealth-iframe.css" />
+</head>
+<body>
+      <!-- Share-link helper UI. Generated share URLs are not guaranteed SEO backlinks. -->
+      <p style="max-width:900px;margin:1rem auto;padding:0 1rem;line-height:1.5">This tool prepares links for sharing a page on third-party services. It does not create guaranteed backlinks or improve rankings automatically. Review each destination before opening it.</p>
+      <div id="controls">
+        <input id="urlInput" type="text" placeholder="Enter your website or page URL…" size="50">
+        <button id="startBtn">Generate Share Links</button>
+        <button id="toggleAdvancedBtn">⚙️ Advanced ▼</button>
+      </div>
+    
+      <div id="advancedPanel" style="display: none;">
+        <label>Mode:
+          <select id="modeSelect">
+            <option value="iframe">IFrame</option>
+            <option value="popup">Popup</option>
+            <option value="tab">Tab</option>
+            
+          </select>
+        </label>
+        <label>Popup/Tab behavior:
+          <select id="reuseToggle">
+            <option value="fresh">Open → goto → wait → close</option>
+            <option value="reuse">Reuse same window/tab</option>
+          </select>
+        </label>
+        <label>Max Concurrent:
+          <input id="concurrencyRange" type="range" min="1" max="5" value="3">
+          <span id="concurrentCount">5</span>
+        </label>
+        <label><input type="checkbox" id="rerunCheckbox"> Repeat after completion</label>
+        <label><input type="checkbox" id="shuffleCheckbox" checked> Shuffle templates before run</label>
+      </div>
+    
+      <div id="shareControls">
+        <input id="newUrl" type="text" readonly placeholder="Shareable URL appears here…">
+        <button id="copyBtn">Copy</button>
+      </div>
+    
+      <button id="downloadBtn">Download URLs</button>
+      <a id="externalLink" href="#" target="_self">🔗 Open Test</a>
+    
+      <div id="progressContainer">
+        <div style="background:#ddd; height:20px; border-radius:10px;">
+          <div id="progressBar" style="height:100%; width:0%; background:#4caf50;"></div>
+        </div>
+        <div id="progressText">0/0 (0%)</div>
+      </div>
+    
+      <!-- Website Screenshot Preview -->
+      <img id="previewwebsite" alt="Website Screenshot">
+    
+      <ul id="results" class="results-list"></ul>
+
+    <script src="./backlink-generator.js"></script>
+    <script src="./website-screenshot-preview.js"></script>
+    
+</body>
+</html>
