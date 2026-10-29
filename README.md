@@ -21,5 +21,6 @@ A static, browser-based helper adapted from the original project.
 - The template list was reduced from thousands of mixed/unknown destinations to common social-sharing endpoints. This avoids automatically sending your URL to a large list of unrelated sites.
 - Social-sharing URLs are not the same as editorial backlinks, and they do not guarantee indexing, ranking gains, or dofollow links.
 - The optional CORS proxy is a third party; do not use the tool with sensitive/private URLs.
+- The screenshot preview uses the external `image.thum.io` service, which receives the page URL entered for preview. Do not enter private URLs.
 - Review the destination before opening any generated link. Avoid repeated or unsolicited submissions. Google treats automated link creation intended to manipulate rankings as link spam.
 - This is a static site: no server, database, or VPS is required.
