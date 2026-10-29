@@ -1,0 +1,9 @@
+[
+  "https://www.facebook.com/sharer/sharer.php?u=[ENCODE_URL]",
+  "https://twitter.com/intent/tweet?url=[ENCODE_URL]&text=[ENCODE_TITLE]",
+  "https://www.linkedin.com/sharing/share-offsite/?url=[ENCODE_URL]",
+  "https://www.reddit.com/submit?url=[ENCODE_URL]&title=[ENCODE_TITLE]",
+  "https://www.pinterest.com/pin/create/button/?url=[ENCODE_URL]&description=[ENCODE_TITLE]",
+  "https://t.me/share/url?url=[ENCODE_URL]&text=[ENCODE_TITLE]",
+  "https://api.whatsapp.com/send?text=[ENCODE_TITLE]%20[ENCODE_URL]"
+]
