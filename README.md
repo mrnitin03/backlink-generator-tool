@@ -15,7 +15,7 @@ A static, browser-based helper adapted from the original project.
 - `backlink-generator.js` — client-side logic
 - `backlink-templates.json` — reviewed social-sharing destinations
 - `youtube-backlink-templates.json` — reviewed sharing destinations used for video URLs
-- `cors-proxies.json` — optional third-party proxy used by the ping workflow
+- `cors-proxies.json` — legacy compatibility data; Ping mode is not exposed in the interface
 
 ## Important limitations and safety
 - The template list was reduced from thousands of mixed/unknown destinations to common social-sharing endpoints. This avoids automatically sending your URL to a large list of unrelated sites.
