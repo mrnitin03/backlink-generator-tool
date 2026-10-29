@@ -1,0 +1,171 @@
+/* === Minimal styling scoped to the Backlink Generator Tool IDs === */
+  /* Color tokens (adjust if you like) */
+  :root{
+    --bgt-bg: #f8fafc;
+    --bgt-border: #e5e7eb;
+    --bgt-ink: #111827;
+    --bgt-muted: #6b7280;
+    --bgt-primary: #2563eb;
+    --bgt-primary-2: #0ea5e9;
+    --bgt-good: #16a34a;
+  }
+
+  /* Top control row */
+  #controls{
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    align-items: center;
+    background: var(--bgt-bg);
+    border: 1px solid var(--bgt-border);
+    border-radius: 12px;
+    padding: 12px;
+    color: var(--bgt-ink);
+  }
+  #urlInput{
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--bgt-border);
+    border-radius: 10px;
+    font: inherit;
+    color: var(--bgt-ink);
+    background: #fff;
+  }
+  #urlInput:focus{
+    outline: none;
+    border-color: var(--bgt-primary);
+    box-shadow: 0 0 0 2px rgba(37,99,235,.18);
+  }
+  #startBtn, #toggleAdvancedBtn{
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #startBtn{
+    color: #fff;
+    background: linear-gradient(135deg, var(--bgt-primary), var(--bgt-primary-2));
+  }
+  #toggleAdvancedBtn{
+    color: var(--bgt-ink);
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+  }
+
+  /* Advanced panel */
+  #advancedPanel{
+    margin-top: 10px;
+    background: #fff;
+    border: 1px solid var(--bgt-border);
+    border-radius: 12px;
+    padding: 12px;
+    color: var(--bgt-ink);
+  }
+  #advancedPanel label{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    background: var(--bgt-bg);
+    border: 1px dashed var(--bgt-border);
+    border-radius: 10px;
+  }
+  #advancedPanel select,
+  #advancedPanel input[type="range"]{
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--bgt-border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--bgt-ink);
+  }
+
+  /* Share row + actions */
+  #shareControls{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  #newUrl{
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px dashed #c7d2fe;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: var(--bgt-ink);
+    font: inherit;
+  }
+  #copyBtn, #downloadBtn{
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #111827;
+    color: #fff;
+  }
+  #downloadBtn{ margin-top: 10px; }
+  #externalLink{
+    display: inline-block;
+    margin-left: 8px;
+    font-weight: 700;
+    color: var(--bgt-primary);
+    text-decoration: none;
+  }
+
+  /* Progress */
+  #progressContainer{
+    margin: 14px 0 10px;
+    color: var(--bgt-muted);
+    font-size: 0.95rem;
+  }
+  #progressBar{
+    background: linear-gradient(90deg, var(--bgt-good), #86efac) !important;
+    border-radius: 10px;
+  }
+  #progressText{ margin-top: 6px; }
+
+  /* Screenshot preview (hidden by default, JS will show when valid) */
+  #previewwebsite{
+    display: none;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--bgt-border);
+    border-radius: 12px;
+    margin: 12px 0;
+  }
+
+  /* Results */
+  .results-list{
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+  }
+  .results-list li{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid var(--bgt-border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: #fff;
+    margin-bottom: 8px;
+  }
+  .results-list a{
+    color: var(--bgt-ink);
+    word-break: break-all;
+    text-decoration: none;
+  }
+  .results-list a:hover{ text-decoration: underline; }
+
+  /* Simple responsive stack */
+  @media (max-width: 720px){
+    #controls{ grid-template-columns: 1fr; }
+    #shareControls{ grid-template-columns: 1fr; }
+    #advancedPanel label{ grid-template-columns: 1fr; }
+  }
