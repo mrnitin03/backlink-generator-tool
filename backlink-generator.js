@@ -271,7 +271,7 @@ function loadSettings() {
     const c = document.cookie.split(';').map(x => x.trim()).find(x => x.startsWith('bg='));
     if (c) try {
         const s = JSON.parse(decodeURIComponent(c.slice(3)));
-        modeSelect.value = s.mode || 'iframe';
+        modeSelect.value = ['iframe', 'popup', 'tab'].includes(s.mode) ? s.mode : 'iframe';
         reuseToggle.value = s.reuse || 'fresh';
         concurrencyRange.value = Math.min(Number(s.conc) || 3, 5);
         rerunCheckbox.checked = s.rerun === true;
@@ -284,7 +284,7 @@ function loadSettings() {
     concurrencyRange.value = 3;
     rerunCheckbox.checked = false;
     shuffleCheckbox.checked = true;
-    concurrentCount.textContent = 5;
+    concurrentCount.textContent = concurrencyRange.value;
     saveSettings();
 }
 
