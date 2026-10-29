@@ -4,8 +4,24 @@
 // - Robust Stop (runToken guards, timers cleared, close popups/iframes), strict timeout handling
 // - Blogger-safe ENCODE handling, CORS Ping first-success, 'Welcome to nginx' detection for archive.*
 
-let backlinkTemplates = ['https://www.facebook.com/sharer/sharer.php?u=[ENCODE_URL]', 'https://twitter.com/intent/tweet?url=[ENCODE_URL]&text=[ENCODE_TITLE]'],
-    youtubeBacklinkTemplates = ['https://video.ultra-zone.net/watch.en.html.gz?v=[ID]', 'https://video.ultra-zone.net/watch.en.html.gz?v={{ID}}'],
+let backlinkTemplates = [
+        'https://www.facebook.com/sharer/sharer.php?u=[ENCODE_URL]',
+        'https://twitter.com/intent/tweet?url=[ENCODE_URL]&text=[ENCODE_TITLE]',
+        'https://www.linkedin.com/sharing/share-offsite/?url=[ENCODE_URL]',
+        'https://www.reddit.com/submit?url=[ENCODE_URL]&title=[ENCODE_TITLE]',
+        'https://www.pinterest.com/pin/create/button/?url=[ENCODE_URL]&description=[ENCODE_TITLE]',
+        'https://t.me/share/url?url=[ENCODE_URL]&text=[ENCODE_TITLE]',
+        'https://api.whatsapp.com/send?text=[ENCODE_TITLE]%20[ENCODE_URL]'
+    ],
+    youtubeBacklinkTemplates = [
+        'https://www.facebook.com/sharer/sharer.php?u=[ENCODE_URL]',
+        'https://twitter.com/intent/tweet?url=[ENCODE_URL]&text=[ENCODE_TITLE]',
+        'https://www.linkedin.com/sharing/share-offsite/?url=[ENCODE_URL]',
+        'https://www.reddit.com/submit?url=[ENCODE_URL]&title=[ENCODE_TITLE]',
+        'https://www.pinterest.com/pin/create/button/?url=[ENCODE_URL]&description=[ENCODE_TITLE]',
+        'https://t.me/share/url?url=[ENCODE_URL]&text=[ENCODE_TITLE]',
+        'https://api.whatsapp.com/send?text=[ENCODE_TITLE]%20[ENCODE_URL]'
+    ],
     corsProxiesTemplates = ['https://api.allorigins.win/raw?url=[ENCODE_URL]'];
 
 const ARCHIVE_TLDS = ["archive.today", "archive.li", "archive.vn", "archive.fo", "archive.md", "archive.ph", "archive.is"];
@@ -889,7 +905,7 @@ function startRun() {
     }
 
     const vid = new URL(norm).searchParams.get('v');
-    let templates = vid ? [...youtubeBacklinkTemplates, 'https://web.archive.org/save/[URL]'] : backlinkTemplates.slice();
+    let templates = vid ? youtubeBacklinkTemplates.slice() : backlinkTemplates.slice();
     if (shuffleCheckbox.checked) templates.sort(() => Math.random() - 0.5);
 
     // NEW: avoid duplicate archive groups (same path+query across archive TLDs)
@@ -946,8 +962,6 @@ function startRun() {
     
     window.history.replaceState(null, '', location.pathname + '?' + norm);
 
-    // Archive current page (only when a run actually starts)
-    archiveCurrentPageBackground();
 
     slots = Array.from({
         length: +concurrencyRange.value
@@ -966,7 +980,7 @@ function startRun() {
 function finishRun() {
     if (!running) return;
     running = false;
-    startBtn.textContent = 'Generate Backlinks';
+    startBtn.textContent = 'Generate Share Links';
     slots.forEach(s => {
         try {
             s.ref && s.ref.close();
@@ -982,7 +996,7 @@ function finishRun() {
 function stopRun() {
     running = false;
     queue = [];
-    startBtn.textContent = 'Generate Backlinks';
+    startBtn.textContent = 'Generate Share Links';
     if (rerunTimer) {
         clearTimeout(rerunTimer);
         rerunTimer = null;
@@ -1034,7 +1048,7 @@ downloadBtn.addEventListener('click', () => {
     });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'backlinks.txt';
+    a.download = 'share-links.txt';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
